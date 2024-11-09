@@ -22,7 +22,6 @@ const MANUAL_BUNDLES: duckdb.DuckDBBundles = {
 
 function App() {
   const [result, setResult] = useState<any>(null);
-  console.log(result);
 
   useEffect(() => {
     (async () => {
@@ -40,7 +39,6 @@ function App() {
           `SELECT count(*)::INTEGER as v FROM generate_series(0, 100) t(v)`
         )
       );
-      console.log(result);
 
       await conn.close();
       await db.terminate();
@@ -51,7 +49,7 @@ function App() {
   return (
     <>
       <pre style={{ textAlign: "left" }}>
-        {JSON.stringify(Object.keys(result), undefined, 2)}
+        {JSON.stringify(result, undefined, 2)}
       </pre>
     </>
   );
